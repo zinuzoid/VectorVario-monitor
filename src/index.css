@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-900 text-white min-h-screen;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* High contrast mode for outdoor readability */
+.high-contrast {
+  --graph-stroke: #22d3ee;
+  --graph-temp: #f97316;
+  --graph-humidity: #3b82f6;
+}
