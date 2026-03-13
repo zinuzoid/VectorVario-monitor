@@ -28,11 +28,11 @@ export function TASGraph({ data, windowMinutes = 10 }) {
   }, [data, minTime]);
 
   return (
-    <div className="bg-slate-800 rounded-xl p-4 border border-slate-700">
+    <div className="bg-slate-800 rounded-xl p-2 sm:p-4 border border-slate-700">
       <h2 className="text-lg font-semibold text-slate-300 mb-2">True Airspeed</h2>
       <div className="h-48 md:h-64">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={windowData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+          <LineChart data={windowData} margin={{ top: 5, right: 5, bottom: 5, left: 0 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
             <XAxis
               dataKey="time"
@@ -47,7 +47,7 @@ export function TASGraph({ data, windowMinutes = 10 }) {
               stroke="#64748b"
               domain={[0, 'auto']}
               tickFormatter={(v) => `${v}`}
-              width={50}
+              width={35}
             />
             <Tooltip
               contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569' }}

@@ -35,78 +35,79 @@ export function StatusHeader({
   const timeRemaining = formatTimeRemaining(batteryTimeRemaining);
 
   return (
-    <header className="flex items-center justify-between px-4 py-3 bg-slate-800 border-b border-slate-700">
-      <div className="flex items-center gap-3">
-        {connected ? (
-          <>
-            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-            <span className="font-medium text-lg">{deviceName}</span>
+    <header className="flex flex-wrap items-center gap-2 px-3 py-2 sm:px-4 sm:py-3 bg-slate-800 border-b border-slate-700">
+      {connected ? (
+        <>
+          <div className="flex items-center gap-2 mr-auto">
+            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shrink-0" />
+            <span className="font-medium text-sm sm:text-lg">{deviceName}</span>
+          </div>
+
+          <div className="flex items-center gap-1">
             <button
               onClick={onDisconnect}
-              className="ml-2 px-3 py-1 text-sm bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+              className="px-2 py-1 text-xs sm:text-sm bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
             >
               Disconnect
             </button>
             <button
               onClick={onResetData}
-              className="px-3 py-1 text-sm bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+              className="px-2 py-1 text-xs sm:text-sm bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
             >
               Reset
             </button>
-            <div className="flex items-center gap-1 ml-2">
-              {WINDOW_OPTIONS.map(opt => (
-                <button
-                  key={opt.value}
-                  onClick={() => onWindowChange(opt.value)}
-                  className={`px-2 py-1 text-sm rounded transition-colors ${
-                    windowMinutes === opt.value
-                      ? 'bg-cyan-600 text-white'
-                      : 'bg-slate-700 hover:bg-slate-600 text-slate-300'
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
+          </div>
+
+          <div className="flex items-center gap-1 sm:ml-4">
+            {WINDOW_OPTIONS.map(opt => (
+              <button
+                key={opt.value}
+                onClick={() => onWindowChange(opt.value)}
+                className={`px-2 py-1 text-xs sm:text-sm rounded transition-colors ${
+                  windowMinutes === opt.value
+                    ? 'bg-cyan-600 text-white'
+                    : 'bg-slate-700 hover:bg-slate-600 text-slate-300'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+
+          {battery !== null && (
+            <div className="flex items-center gap-1 sm:gap-2 ml-auto">
+              <span className={`text-lg sm:text-2xl font-bold ${batteryColor}`}>
+                🔋 {battery}%
+              </span>
+              {timeRemaining && (
+                <span className="text-slate-400 text-xs sm:text-sm">
+                  ({timeRemaining})
+                </span>
+              )}
             </div>
-          </>
-        ) : (
-          <>
-            <div className="w-3 h-3 bg-slate-500 rounded-full" />
+          )}
+        </>
+      ) : (
+        <>
+          <div className="flex items-center gap-2 mr-auto">
+            <div className="w-3 h-3 bg-slate-500 rounded-full shrink-0" />
             <button
               onClick={onConnect}
               disabled={isConnecting || useSimulation}
-              className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 disabled:bg-slate-600 disabled:cursor-not-allowed rounded-lg font-medium transition-colors"
+              className="px-3 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 disabled:bg-slate-600 disabled:cursor-not-allowed rounded-lg font-medium transition-colors"
             >
               {isConnecting ? 'Connecting...' : 'Connect VectorVario'}
             </button>
-          </>
-        )}
-      </div>
-
-      <div className="flex items-center gap-4">
-        {!connected && (
+          </div>
           <button
             onClick={() => onSimulationChange(true)}
             disabled={isConnecting}
-            className="px-4 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-600 disabled:cursor-not-allowed rounded-lg font-medium transition-colors text-slate-300"
+            className="px-3 py-2 text-sm bg-slate-700 hover:bg-slate-600 disabled:bg-slate-600 disabled:cursor-not-allowed rounded-lg font-medium transition-colors text-slate-300"
           >
             Start Sim
           </button>
-        )}
-
-        {connected && battery !== null && (
-          <div className="flex items-center gap-2">
-            <span className={`text-2xl font-bold ${batteryColor}`}>
-              🔋 {battery}%
-            </span>
-            {timeRemaining && (
-              <span className="text-slate-400 text-sm">
-                ({timeRemaining})
-              </span>
-            )}
-          </div>
-        )}
-      </div>
+        </>
+      )}
     </header>
   );
 }

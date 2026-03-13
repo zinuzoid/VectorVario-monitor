@@ -55,7 +55,7 @@ function App() {
         onWindowChange={setWindowMinutes}
       />
 
-      <main className="flex-1 p-4 space-y-4 w-full">
+      <main className="flex-1 p-2 sm:p-4 space-y-4 w-full">
         {error && (
           <div className="bg-red-900/50 border border-red-700 rounded-lg p-3 text-red-300">
             {error}
@@ -101,7 +101,7 @@ function App() {
       </main>
 
       <footer className="text-center py-3 text-slate-500 text-sm border-t border-slate-800">
-        VectorVario Monitor
+        VectorVario Monitor · Made with ❤️ by ArmchairPilot 🪂
       </footer>
     </div>
   );
