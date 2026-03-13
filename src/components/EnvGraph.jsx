@@ -44,7 +44,7 @@ export function EnvGraph({ tempData, humidityData, windowMinutes = 10 }) {
 
   return (
     <div className="bg-slate-800 rounded-xl p-2 sm:p-4 border border-slate-700">
-      <h2 className="text-lg font-semibold text-slate-300 mb-2">Environment</h2>
+      <h2 className="text-lg font-semibold text-slate-300 mb-2">🌡️ Environment</h2>
       <div className="h-48 md:h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={mergedData} margin={{ top: 5, right: 5, bottom: 5, left: 0 }}>
@@ -63,7 +63,7 @@ export function EnvGraph({ tempData, humidityData, windowMinutes = 10 }) {
               stroke="#f97316"
               domain={['auto', 'auto']}
               tickFormatter={(v) => `${v.toFixed(1)}°`}
-              width={44}
+              width={48}
             />
             <YAxis
               yAxisId="humidity"

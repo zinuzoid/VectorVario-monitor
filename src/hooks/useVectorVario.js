@@ -23,6 +23,7 @@ export function useVectorVario(useSimulation = false) {
   const [humidityHistory, setHumidityHistory] = useState([]);
   const [error, setError] = useState(null);
   const [isConnecting, setIsConnecting] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState(null);
 
   const simulationRef = useRef(null);
   const startTimeRef = useRef(null);
@@ -66,6 +67,7 @@ export function useVectorVario(useSimulation = false) {
   const addDataPoint = useCallback((type, value) => {
     const timestamp = getTimestamp();
     const point = { time: timestamp, value };
+    setLastUpdate(timestamp);
 
     switch (type) {
       case 'tas':
@@ -184,6 +186,7 @@ export function useVectorVario(useSimulation = false) {
     humidityHistory,
     error,
     isConnecting,
+    lastUpdate,
     connect,
     disconnect,
     resetData,

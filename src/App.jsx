@@ -22,6 +22,7 @@ function App() {
     humidityHistory,
     error,
     isConnecting,
+    lastUpdate,
     connect,
     disconnect,
     resetData,
@@ -64,7 +65,7 @@ function App() {
 
         {!connected && !useSimulation && (
           <div className="text-center py-12 text-slate-400">
-            <p className="text-lg mb-2">Connect to a VectorVario sensor to start monitoring</p>
+            <p className="text-lg mb-2">Connect to a VectorVario to start monitoring</p>
             <p className="text-sm">Or enable Simulation Mode to test the UI</p>
           </div>
         )}
@@ -74,19 +75,19 @@ function App() {
             {/* Big Number Readouts */}
             <div className="grid grid-cols-3 gap-2 bg-slate-800 rounded-xl border border-slate-700">
               <BigNumber
-                label="Temp"
+                label="🌡️ Temp"
                 value={currentTemp}
                 unit="°C"
                 color="text-orange-400"
               />
               <BigNumber
-                label="Humidity"
+                label="💧 Humidity"
                 value={currentHumidity}
                 unit="%"
                 color="text-blue-400"
               />
               <BigNumber
-                label="TAS"
+                label="💨 TAS"
                 value={currentTAS}
                 unit="km/h"
                 color="text-cyan-400"
@@ -96,6 +97,12 @@ function App() {
             {/* Graphs */}
             <EnvGraph tempData={tempHistory} humidityData={humidityHistory} windowMinutes={windowMinutes} />
             <TASGraph data={tasHistory} windowMinutes={windowMinutes} />
+
+            {lastUpdate && (
+              <p className="text-center text-xs text-slate-500">
+                📡 Last sensor update: {new Date(lastUpdate).toLocaleTimeString('en-US', { hour12: false })}
+              </p>
+            )}
           </>
         )}
       </main>
