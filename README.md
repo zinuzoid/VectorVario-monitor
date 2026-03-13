@@ -1,6 +1,8 @@
 # VectorVario Monitor
 [![CI](https://github.com/zinuzoid/VectorVario-monitor/actions/workflows/ci.yml/badge.svg)](https://github.com/zinuzoid/VectorVario-monitor/actions/workflows/ci.yml)
 
+**Live:** [vv.lazyrasp.com](https://vv.lazyrasp.com/)
+
 Real-time telemetry dashboard for the [VectorVario](https://vectorvario.com). Connects via Web Bluetooth to display true airspeed (TAS), temperature, humidity, and battery status with live-updating graphs.
 
 ![React](https://img.shields.io/badge/React-18-blue) ![Vite](https://img.shields.io/badge/Vite-6-purple) ![Tailwind](https://img.shields.io/badge/Tailwind-3-cyan)
