@@ -42,7 +42,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col high-contrast">
+    <div className="h-dvh flex flex-col overflow-hidden high-contrast">
       <StatusHeader
         deviceName={deviceName}
         battery={battery}
@@ -58,7 +58,7 @@ function App() {
         onWindowChange={setWindowMinutes}
       />
 
-      <main className="flex-1 p-2 sm:p-4 space-y-4 w-full">
+      <main className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-4 w-full">
         {error && (
           <div className="bg-red-900/50 border border-red-700 rounded-lg p-3 text-red-300">
             {error}
