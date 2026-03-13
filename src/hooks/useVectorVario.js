@@ -75,8 +75,8 @@ export function useVectorVario(useSimulation = false) {
     // Add to battery history
     batteryHistoryRef.current.push({ time: now, value });
 
-    // Keep only last 30 minutes of battery data for estimation
-    const cutoff = now - 30 * 60 * 1000;
+    // Keep only last 10 minutes of battery data for estimation
+    const cutoff = now - 10 * 60 * 1000;
     batteryHistoryRef.current = batteryHistoryRef.current.filter(p => p.time > cutoff);
 
     // Calculate drain rate and estimate time remaining
