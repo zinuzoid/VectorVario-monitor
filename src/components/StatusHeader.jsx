@@ -97,7 +97,7 @@ export function StatusHeader({
         {connected && battery !== null && (
           <div className="flex items-center gap-2">
             <span className={`text-2xl font-bold ${batteryColor}`}>
-              {battery}%
+              🔋 {battery}%
             </span>
             {timeRemaining && (
               <span className="text-slate-400 text-sm">
