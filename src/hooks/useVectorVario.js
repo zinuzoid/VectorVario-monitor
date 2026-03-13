@@ -4,7 +4,7 @@ import { vectorVarioService } from '../services/VectorVarioService';
 const WINDOW_MS = 3600000; // keep 1 hour of data (max window size)
 
 // Time-based buffer - prunes anything older than window
-const addToBuffer = (buffer, point, windowMs) => {
+export const addToBuffer = (buffer, point, windowMs) => {
   const cutoff = point.time - windowMs;
   const pruned = buffer.filter(p => p.time > cutoff);
   return [...pruned, point];

@@ -1,4 +1,4 @@
-const formatTimeRemaining = (ms) => {
+export const formatTimeRemaining = (ms) => {
   if (!ms || ms <= 0) return null;
 
   const hours = Math.floor(ms / (1000 * 60 * 60));
