@@ -28,6 +28,45 @@ export function useVectorVario(useSimulation = false) {
   const simulationRef = useRef(null);
   const startTimeRef = useRef(null);
   const batteryHistoryRef = useRef([]);
+  const wakeLockRef = useRef(null);
+
+  // Screen Wake Lock — keep display on while connected
+  useEffect(() => {
+    if (!connected) {
+      if (wakeLockRef.current) {
+        wakeLockRef.current.release();
+        wakeLockRef.current = null;
+      }
+      return;
+    }
+
+    const requestWakeLock = async () => {
+      try {
+        if ('wakeLock' in navigator) {
+          wakeLockRef.current = await navigator.wakeLock.request('screen');
+        }
+      } catch {
+        // Wake lock request can fail (e.g. low battery, browser policy)
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && connected) {
+        requestWakeLock();
+      }
+    };
+
+    requestWakeLock();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      if (wakeLockRef.current) {
+        wakeLockRef.current.release();
+        wakeLockRef.current = null;
+      }
+    };
+  }, [connected]);
 
   const updateBattery = useCallback((value) => {
     const now = Date.now();
