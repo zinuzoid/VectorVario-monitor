@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { version } from '../package.json';
 import { useVectorVario } from './hooks/useVectorVario';
 import { StatusHeader } from './components/StatusHeader';
 import { BigNumber } from './components/BigNumber';
@@ -108,7 +109,7 @@ function App() {
       </main>
 
       <footer className="text-center py-3 text-slate-500 text-sm border-t border-slate-800">
-        VectorVario Monitor · Made with ❤️ by ArmchairPilot 🪂
+        VectorVario Monitor v{version} · Made with ❤️ by ArmchairPilot 🪂
       </footer>
     </div>
   );
