@@ -7,8 +7,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run dev` — start Vite dev server (hot reload)
 - `npm run build` — production build
 - `npm run preview` — preview production build locally
+- `npm run test` — run Vitest in watch mode
+- `npm run test:run` — run Vitest once (used in CI)
 
-No test runner or linter is configured.
+No linter is configured.
 
 ## Architecture
 
@@ -39,4 +41,4 @@ VV-Monitor is a React SPA that connects to a **VectorVario** BLE sensor (paragli
 
 - React 18, Vite 6, Tailwind CSS 3, Recharts 2
 - No TypeScript, no state management library, no router
-- CI: GitHub Actions runs `npm ci && npm run build` on `main` branch
+- CI: GitHub Actions runs `npm ci && npm run test:run && npm run build` on `master` branch
