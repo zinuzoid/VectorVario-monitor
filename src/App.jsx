@@ -5,6 +5,7 @@ import { StatusHeader } from './components/StatusHeader';
 import { BigNumber } from './components/BigNumber';
 import { TASGraph } from './components/TASGraph';
 import { EnvGraph } from './components/EnvGraph';
+import { WelcomeIllustration } from './components/WelcomeIllustration';
 
 function App() {
   const [useSimulation, setUseSimulation] = useState(false);
@@ -66,6 +67,7 @@ function App() {
 
         {!connected && !useSimulation && (
           <div className="text-center py-12 text-slate-400">
+            <WelcomeIllustration />
             <p className="text-lg mb-2">Connect to a VectorVario to start monitoring</p>
             <p className="text-sm">Or enable Simulation Mode to test the UI</p>
           </div>
